@@ -10,6 +10,14 @@ const router = Router()
 const account = new Account('legolas', 'legolas@thefellowship.com', 'elf4life')
 
 router.put('/username', (req, res) => {
+  
+  try {
+    const { newUsername, password } = req.body;
+    account.updateUsername(newUsername, password);
+    res.json({ username: newUsername });
+  } catch (error) {
+    res.status(error.code || 500).json({ message: error.message });
+  }
   /**
    * Use try/catch to attempt account.updateUsername with the newUsername and
    * password found in the req.body.
@@ -20,8 +28,8 @@ router.put('/username', (req, res) => {
    * In case this fails, set the status of the response to the error code
    * and send a useful message.
    */
-})
+});
 
-app.use('/account', router)
+app.use('/account', router);
 
 export default app
