@@ -12,7 +12,7 @@ const app = express()
 
 app.get('/ping', (req, res) => {
     res.send('pong');
-  });
+});
 
 
 

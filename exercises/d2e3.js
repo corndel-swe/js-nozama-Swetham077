@@ -18,7 +18,7 @@ const alarms = [
 
 app.get('/alarms', (req, res) => {
 
-res.json(alarms)
+  res.json(alarms);
 })
 
 app.get('/alarms/:index', (req, res) => {
